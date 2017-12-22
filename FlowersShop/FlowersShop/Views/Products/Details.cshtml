@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="page-title-box">
+            <h4 class="page-title">Products Details </h4>
+            <ol class="breadcrumb p-0 m-0">
+                <li>
+                    <a href="@Url.Action("Index", "HomeAdmin")">FlowersShop</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Products")">Products</a>
+                </li>
+                <li class="active">
+                    Details
+                </li>
+            </ol>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<!-- end row -->
+
+<div class="property-detail-wrapper">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="">
+                <img src="~/Content/imgs/@ViewBag.product.Photo" width="650"/>
+            </div>
+            <!-- end slider -->
+
+        </div> <!-- end col -->
+
+        <div class="col-md-4">
+
+
+            <div class="card-box">
+                <div class="table-responsive">
+                    <table class="table table-bordered m-b-0">
+                        <tbody>
+                        <tr>
+                            <th scope="row">Name:</th>
+                            <td>@ViewBag.product.Name</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Price:</th>
+                            <td>@ViewBag.product.Price</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Contract type: </th>
+                            <td><span class="label label-danger">For Sale</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Quantity:</th>
+                            <td>@ViewBag.product.Quantity</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Status:</th>
+                            <td>@ViewBag.status</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Category:</th>
+                            <td>@ViewBag.product.Category.Name</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Description:</th>
+                            <td>@ViewBag.product.Description</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- end card-box -->
+            <div align="right">
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        </div> <!-- end col -->
+    </div> <!-- end row -->
+</div>
+<!-- end property-detail-wrapper -->

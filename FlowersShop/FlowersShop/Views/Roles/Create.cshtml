@@ -1,0 +1,68 @@
+﻿@using System.Web.UI.WebControls
+@model FlowersShop.Models.Role
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="page-title-box">
+            <h4 class="page-title">Categories </h4>
+            <ol class="breadcrumb p-0 m-0">
+                <li>
+                    <a href="@Url.Action("Index", "HomeAdmin")">FlowersShop</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Roles")">Roles</a>
+                </li>
+                <li class="active">
+                    Create
+                </li>
+            </ol>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<!-- end row -->
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="card-box">
+
+            <div class="row">
+                <div class="col-sm-12 col-xs-12 col-md-6">
+                    <h3><img src="~/Content/assets/images/logo_sm.png" alt="" height="24"> Create Roles </h3>
+                    <p class="text-muted font-13 m-b-10">
+                        Usual or customary function: what is his role in the organization?
+                    </p>
+
+                    <div class="p-20">
+                        <form role="form" data-parsley-validate="" novalidate="" action="@Url.Action("Create", "Roles")" method="post">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-8">
+                                    <button type="submit" class="btn btn-primary waves-effect waves-light">
+                                        Create
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+            <!-- end row -->
+
+        </div> <!-- end ard-box -->
+    </div><!-- end col-->
+
+</div>
+<!-- end row -->
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

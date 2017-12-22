@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Name: </dt>
+        <dd>@ViewBag.product.Name</dd>
+
+        <dt>Price: </dt>
+        <dd>@ViewBag.product.Price</dd>
+
+        <dt>Quantity: </dt>
+        <dd>@ViewBag.product.Quantity</dd>
+        <dt>Photo</dt>
+        <dd><img src="~/Content/imgs/@ViewBag.product.Photo" width="300" height="auto" /></dd>
+        <dt>Status</dt>
+        <dd>@ViewBag.status</dd>
+        <dt>Description</dt>
+        <dd>@ViewBag.product.Description</dd>
+        <dt>Category</dt>
+        <dd>@ViewBag.product.Category.Name</dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = @ViewBag.product.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
