@@ -1,1 +1,63 @@
-﻿
+﻿@using FlowersShop.ViewModels
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    decimal s = 0;
+    var list = (List<Item>)Session["cart"];
+}
+
+<h3>My Cart</h3>
+
+@if (list != null)
+{
+    using (Html.BeginForm())
+    {
+        <table style="border: black 1px solid">
+            <tr>
+                <th>Option</th>
+                <th>Name</th>
+                <th>Photo</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Sub Total</th>
+            </tr>
+            @foreach (var item in list)
+            {
+                s += item.Product.Price.Value * item.Quantity;
+                <tr>
+                    <td>
+                        @Html.ActionLink("X", "Delete", "ShoppingCart", new { id = item.Product.Id }, new { onclick = "return confirm(Xóa sản phẩm này khỏi giỏ hàng?);" })
+                    </td>
+                    <td>@item.Product.Name</td>
+                    <td><img src="~/Content/imgs/@item.Product.Photo" width="30" height="30" /></td>
+                    <td>@item.Product.Price</td>
+                    <td>
+                        <input id="quantity" type="text" value="@item.Quantity" />&nbsp;
+                        <span id="errmsg"></span>
+                    </td>
+                    <td><b>@(item.Product.Price * item.Quantity)</b></td>
+                </tr>
+            }
+            <tr>
+                <td colspan="5" style="text-align: right"><b>Total</b></td>
+                <td id="total">@s</td>
+            </tr>
+        </table>
+        @Html.ActionLink("Thanh toán", "CheckOut", "ShoppingCart")
+    }
+}
+<br />
+<a href="@Url.Action("Index", "Product")">Tiếp tục mua hàng</a>
+
+@section scripts
+{
+    <script type="text/javascript">
+        $('#quantity').keypress(function(e) {
+            if (e.which !== 8 && e.which !== 0 && (e.which < 48 || e.which > 57)) {
+                $('#errmsg').html('Giá trị không hợp lệ').css('color', 'red').show().fadeOut();
+                return false;
+            }
+        });
+    </script>
+}
